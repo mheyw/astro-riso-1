@@ -1,0 +1,60 @@
+---
+// src/components/ImageProcessor.astro
+---
+
+<div class="canvas-wrapper">
+    <div id="canvasContainer"></div>
+  </div>
+  
+  <style>
+    .canvas-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  
+    #canvasContainer {
+      width: 800px;
+      height: 800px;
+      position: relative;
+    }
+  
+    #canvasContainer canvas {
+      border-radius: 8px;
+    }
+  
+    /* Add a mobile-friendly container that allows horizontal scrolling if needed */
+    @media (max-width: 840px) {
+      .canvas-wrapper {
+        padding: 10px;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+  
+      #canvasContainer {
+        min-width: 800px; /* Ensure the container doesn't shrink */
+      }
+    }
+  </style>
+  
+  <script>
+    import { initializeImageProcessor } from '../scripts/imageProcessing.js';
+    import p5 from 'p5';
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      new p5((p) => {
+        const processor = initializeImageProcessor(p);
+        
+        p.setup = function() {
+          processor.setup();
+        };
+  
+        p.draw = function() {
+          processor.draw();
+        };
+      }, 'canvasContainer');
+    });
+  </script>

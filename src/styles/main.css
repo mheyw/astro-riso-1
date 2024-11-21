@@ -1,0 +1,38 @@
+/* src/styles/main.css */
+.control-group {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-container input[type="range"] {
+    flex-grow: 1;
+}
+
+.value-display {
+    min-width: 40px;
+    text-align: right;
+}
+
+canvas {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #eee;
+    font-size: 1.1em;
+    color: #333;
+}

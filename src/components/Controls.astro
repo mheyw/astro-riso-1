@@ -1,0 +1,327 @@
+---
+// src/components/Controls.astro
+---
+
+<div class="controls">
+    <div class="control-group">
+      <label for="imageUpload">Upload Image:</label>
+      <input type="file" id="imageUpload" accept="image/*">
+    </div>
+  
+    <div class="section-title">Image Adjustments</div>
+    <div class="control-group">
+      <label for="brightnessAdjust">Brightness:</label>
+      <div class="slider-container">
+        <input type="range" id="brightnessAdjust" min="-100" max="100" value="0">
+        <span class="value-display" id="brightnessAdjustValue">0</span>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <label for="contrast">Contrast:</label>
+      <div class="slider-container">
+        <input type="range" id="contrast" min="-100" max="100" value="0">
+        <span class="value-display" id="contrastValue">0</span>
+      </div>
+    </div>
+  
+    <div class="control-group">
+      <label for="saturationAdjust">Saturation:</label>
+      <div class="slider-container">
+        <input type="range" id="saturationAdjust" min="-100" max="100" value="0">
+        <span class="value-display" id="saturationAdjustValue">0</span>
+      </div>
+    </div>
+  
+    <div class="section-title">Risograph Settings</div>
+    <div class="control-group">
+      <label for="foregroundColor">Ink Color:</label>
+      <input type="color" id="foregroundColor" value="#ff4444">
+    </div>
+  
+    <div class="control-group">
+      <label for="backgroundColor">Paper Color:</label>
+      <input type="color" id="backgroundColor" value="#ffffff">
+    </div>
+  
+    <div class="control-group">
+      <label for="threshold">Ink Density:</label>
+      <div class="slider-container">
+        <input type="range" id="threshold" min="0" max="255" value="128">
+        <span class="value-display" id="thresholdValue">128</span>
+      </div>
+    </div>
+  
+    <div class="control-group">
+      <label for="noiseAmount">Paper Texture:</label>
+      <div class="slider-container">
+        <input type="range" id="noiseAmount" min="0" max="50" value="15">
+        <span class="value-display" id="noiseAmountValue">15</span>
+      </div>
+    </div>
+  
+    <div class="control-group">
+      <label for="opacity">Ink Opacity:</label>
+      <div class="slider-container">
+        <input type="range" id="opacity" min="0" max="100" value="85">
+        <span class="value-display" id="opacityValue">85</span>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .controls {
+      min-width: 320px;
+      max-width: 380px;
+      padding: 24px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      height: fit-content;
+    }
+  
+    .control-group {
+      margin: 16px 0;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #374151;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+  
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  
+    .slider-container input[type="range"] {
+      flex-grow: 1;
+    }
+  
+    .value-display {
+      min-width: 45px;
+      text-align: right;
+      font-size: 14px;
+      font-weight: 500;
+      color: #111827;
+      padding: 4px 8px;
+      background: #F3F4F6;
+      border-radius: 4px;
+    }
+  
+    .section-title {
+      margin: 28px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #F3F4F6;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+      letter-spacing: 0.01em;
+    }
+  
+    /* File input styling */
+    input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 2px dashed #E5E7EB;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #6B7280;
+      transition: all 0.2s ease;
+    }
+  
+    input[type="file"]:hover {
+      border-color: #D1D5DB;
+      background: #F9FAFB;
+    }
+  
+    /* Color input styling */
+    input[type="color"] {
+      width: 100%;
+      height: 48px;
+      padding: 4px;
+      border: 2px solid #E5E7EB;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+  
+    input[type="color"]:hover {
+      border-color: #D1D5DB;
+    }
+  
+    input[type="color"]:focus {
+      border-color: #2563EB;
+      outline: none;
+    }
+  
+    /* Range input styling */
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #E5E7EB;
+      border-radius: 3px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+  
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #2563EB;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+      transition: all 0.2s ease;
+    }
+  
+    input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: #2563EB;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+      transition: all 0.2s ease;
+    }
+  
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: #1D4ED8;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      transform: scale(1.1);
+    }
+  
+    input[type="range"]::-moz-range-thumb:hover {
+      background: #1D4ED8;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+      transform: scale(1.1);
+    }
+  
+    input[type="range"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  
+    input[type="range"]:disabled::-webkit-slider-thumb {
+      cursor: not-allowed;
+    }
+  
+    input[type="range"]:disabled::-moz-range-thumb {
+      cursor: not-allowed;
+    }
+  
+    /* First section title special styling */
+    .control-group:first-of-type {
+      margin-top: 0;
+    }
+  
+    .section-title:first-of-type {
+      margin-top: 24px;
+    }
+  
+    /* Mobile optimization */
+    @media (max-width: 640px) {
+      .controls {
+        min-width: 280px;
+        padding: 20px;
+      }
+  
+      .section-title {
+        font-size: 15px;
+      }
+  
+      label {
+        font-size: 13px;
+      }
+  
+      .value-display {
+        font-size: 13px;
+      }
+    }
+  </style>
+  
+  <script>
+    let processingTimeout;
+  
+    function setupSliderWithDisplay(id, callback) {
+      const slider = document.getElementById(id);
+      const display = document.getElementById(id + 'Value');
+      
+      if (slider && display) {
+        slider.addEventListener('input', () => {
+          display.textContent = slider.value;
+          window[id + 'Val'] = parseInt(slider.value);
+          if (callback) callback();
+        });
+      }
+    }
+  
+    function debounceProcessImage() {
+      const loadingElement = document.getElementById('loading');
+      if (loadingElement) {
+        loadingElement.style.display = 'block';
+      }
+      
+      clearTimeout(processingTimeout);
+      processingTimeout = setTimeout(() => {
+        window.processImage?.();
+      }, 150);
+    }
+  
+    // Initialize all controls when the document is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Setup image upload
+      const imageUpload = document.getElementById('imageUpload');
+      if (imageUpload) {
+        imageUpload.addEventListener('change', (event) => {
+          window.handleImageUpload?.(event);
+        });
+      }
+  
+      // Setup color inputs
+      const foregroundColor = document.getElementById('foregroundColor');
+      const backgroundColor = document.getElementById('backgroundColor');
+      if (foregroundColor && backgroundColor) {
+        foregroundColor.addEventListener('input', () => window.updateColors?.());
+        backgroundColor.addEventListener('input', () => window.updateColors?.());
+      }
+  
+      // Setup all sliders
+      setupSliderWithDisplay('threshold', () => window.updateThreshold?.());
+      setupSliderWithDisplay('noiseAmount', () => window.updateNoise?.());
+      setupSliderWithDisplay('opacity', () => window.updateOpacity?.());
+      setupSliderWithDisplay('brightnessAdjust', () => window.updateImageAdjustments?.());
+      setupSliderWithDisplay('contrast', () => window.updateImageAdjustments?.());
+      setupSliderWithDisplay('saturationAdjust', () => window.updateImageAdjustments?.());
+  
+      // Initially disable controls until image is loaded
+      setControlsEnabled(false);
+    });
+  
+    function setControlsEnabled(enabled) {
+      const controls = [
+        'brightnessAdjust', 'contrast', 'saturationAdjust', 'threshold', 
+        'noiseAmount', 'opacity', 'foregroundColor', 'backgroundColor'
+      ];
+      
+      controls.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.disabled = !enabled;
+        }
+      });
+    }
+  
+    // Export functions to be used by other components
+    window.setControlsEnabled = setControlsEnabled;
+  </script>
